@@ -5,28 +5,18 @@ import userImg from "../assets/userpic.png";
 import { BarChart, DoughnutChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
 import WidgetItem from "../components/WidgetItems";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWidgets } from "../actions/actions";
 
 const Dashboard: React.FC = () => {
-  const [widgetData, setWidgetData] = useState([]);
-  const [error, setError] = useState<string | null>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("/data.json"); // Corrected path
-        console.log(response); // Log the response
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        setWidgetData(data.insight_summary);
-      } catch (error) {
-        setError(`Error fetching data: ${(error as Error).message}`);
-      }
-    };
+  const dispatch = useDispatch();
+  const { data, error } = useSelector((state) => state.widgets);
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+    dispatch(fetchWidgets());
+  }, [dispatch]);
+
   return (
     <div className="admin-container">
       <AdminSidebar />
@@ -41,13 +31,11 @@ const Dashboard: React.FC = () => {
 
           <h2>Insights Summary</h2>
           <section className="widget-container">
-            {/* Check for errors */}
             {error ? (
               <div className="error-message">{error}</div>
             ) : (
               <>
-                {/* Use WidgetItem component with data from data.json */}
-                <WidgetItem data={widgetData} />
+                <WidgetItem data={data} />
               </>
             )}
           </section>

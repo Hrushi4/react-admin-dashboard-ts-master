@@ -21,11 +21,11 @@
   }
 
   .widget-container {
-    @include flex(row, space-between, stretch, 3rem);
-    padding: 1rem 2rem 2rem 0;
+    @include flex(row, space-between, stretch, 2rem);
+    padding: 1rem 2rem 1rem 0;
 
     .widget {
-      width: 16rem;
+      width: 17rem;
       background-color: white;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
       padding: 2rem;
