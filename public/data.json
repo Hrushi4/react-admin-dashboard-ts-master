@@ -75,5 +75,11 @@
       "value": 0.45,
       "color": "rgb(76 0 255)"
     }
-  ]
+  ],
+  "category_distribution": {
+    "small_talk": 300,
+    "technical_support": 450,
+    "sales_inquiries": 350,
+    "customer_service": 400
+  }
 }
