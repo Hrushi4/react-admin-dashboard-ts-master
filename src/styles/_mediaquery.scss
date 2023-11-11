@@ -1,0 +1,40 @@
+@media screen and (width<= 1200px) {
+  .admin-container {
+    overflow: auto;
+  }
+
+  .dashboard {
+    .widget-container,
+    .graph-container,
+    .transaction-container {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .graph-container {
+      padding: 2rem;
+    }
+  }
+}
+
+@media screen and (width<= 1100px) {
+  .admin-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media screen and (width<= 600px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  .chart-container {
+    padding: 0;
+    > h1 {
+      margin: 0;
+      text-align: center;
+    }
+    > section {
+      margin: 8rem auto;
+    }
+  }
+}
