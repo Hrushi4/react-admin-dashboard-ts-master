@@ -1,8 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { fetchCategoryDistribution } from "../actions/categoryActions";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -34,28 +31,16 @@ ChartJS.register(
 interface CategoryDistributionProps {}
 
 const CategoryDistribution: React.FC<CategoryDistributionProps> = () => {
-  const dispatch = useDispatch();
-  const { categoryData, error } = useSelector(
-    (state: RootState) => state.category
-  );
-
-  useEffect(() => {
-    dispatch(fetchCategoryDistribution());
-  }, [dispatch]);
-
-  interface RootState {
-    category: {
-      categoryData: Record<string, number>;
-      error: string | null;
-    };
-  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment
+  //@ts-ignore
+  const data = useSelector((state) => state.data.data.category_distribution);
 
   const chartData = {
-    labels: Object.keys(categoryData),
+    labels: Object.keys(data),
     datasets: [
       {
         label: "Category Distribution",
-        data: Object.values(categoryData),
+        data: Object.values(data),
         backgroundColor: [
           "rgb(0, 115, 255)",
           "rgb(0, 198, 202)",
@@ -99,13 +84,9 @@ const CategoryDistribution: React.FC<CategoryDistributionProps> = () => {
   };
 
   return (
-    <div>
-      {error ? (
-        <div className="error-message">{error}</div>
-      ) : (
-        <Bar options={options} data={chartData} />
-      )}
-    </div>
+    <>
+      <Bar options={options} data={chartData} />
+    </>
   );
 };
 

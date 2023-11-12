@@ -1,12 +1,8 @@
 import { combineReducers } from "redux";
-import widgetReducer from "./widgetReducer";
-import categoryReducer from "./categoryReducer";
-import responseReducer from "./responseReducer";
+import dataResponseReducer from "./dataResponseReducer";
 
 const rootReducer = combineReducers({
-  widgets: widgetReducer,
-  category: categoryReducer,
-  response: responseReducer,
+  data: dataResponseReducer,
 });
 
 export default rootReducer;

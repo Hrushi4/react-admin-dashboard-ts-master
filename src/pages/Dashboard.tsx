@@ -4,19 +4,12 @@ import { BsSearch } from "react-icons/bs";
 import userImg from "../assets/userpic.png";
 import CategoryDistribution from "../components/CategoryDistribution";
 import WidgetItem from "../components/WidgetItems";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import { fetchWidgets } from "../actions/actions";
+import { useSelector } from "react-redux";
 
 const Dashboard: React.FC = () => {
-  const dispatch = useDispatch();
-  const { data, error } = useSelector((state) => state.widgets);
-
-  useEffect(() => {
-    dispatch(fetchWidgets());
-  }, [dispatch]);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { data, error } = useSelector((state) => state.data);
 
   return (
     <div className="admin-container">
@@ -36,30 +29,33 @@ const Dashboard: React.FC = () => {
               <div className="error-message">{error}</div>
             ) : (
               <>
-                <WidgetItem data={data} />
+                <WidgetItem data={data.insight_summary} />
               </>
             )}
           </section>
 
           <section className="graph-container">
-            <div className="revenue-chart">
-              <h2>Category Distribution</h2>
-              {/* Grapph here */}
+            <div className="dashboard-categories">
+              <h3>Category Distribution</h3>
               <CategoryDistribution />
             </div>
 
             <div className="dashboard-categories">
               <h2>Inventory</h2>
               <div>
-                {/* {data.categories.map((i) => (
+                {data.categories.map((i) => (
                   <CategoryItem
                     key={i.heading}
                     heading={i.heading}
                     value={i.value}
                     color={`hsl(${i.value * 4},${i.value}%,50%)`}
                   />
-                ))} */}
+                ))}
               </div>
+            </div>
+            <div className="dashboard-categories">
+              <h2>Inventory</h2>
+              <div></div>
             </div>
           </section>
         </main>

@@ -1,8 +1,11 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import { Suspense, lazy } from "react";
-import { Provider } from "react-redux";
-import store from "./store/store";
+import { Suspense, lazy, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 import Loader from "./components/Loader";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+//@ts-ignore
+import { fetchData } from "../src/actions/dataResponseAction";
 
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const ResponseTime = lazy(() => import("./pages/ResponseTime"));
@@ -10,8 +13,12 @@ const UserSatisfaction = lazy(() => import("./pages/UserSatisfaction"));
 const UsageStatistics = lazy(() => import("./pages/UsageStatistics"));
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchData());
+  }, []);
   return (
-    <Provider store={store}>
+    <>
       <Router>
         <Suspense fallback={<Loader />}>
           <Routes>
@@ -37,7 +44,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </Router>
-    </Provider>
+    </>
   );
 };
 

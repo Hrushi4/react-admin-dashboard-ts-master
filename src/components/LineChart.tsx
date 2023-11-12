@@ -66,6 +66,11 @@ export const LineChart = ({
     scales: {
       y: {
         beginAtZero: true,
+        max: 1,
+        title: {
+          display: true,
+          text: "Average time in Seconds",
+        },
         grid: {
           display: false,
         },
