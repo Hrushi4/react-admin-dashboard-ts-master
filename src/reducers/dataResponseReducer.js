@@ -1,18 +1,17 @@
-// src/reducers/widgetReducer.js
 const initialState = {
   data: [],
   error: null,
 };
 
-const widgetReducer = (state = initialState, action) => {
+const dataResponseReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_WIDGETS_SUCCESS":
+    case "FETCH_DATA_RESPONSE_SUCCESS":
       return {
         ...state,
         data: action.payload,
         error: null,
       };
-    case "FETCH_WIDGETS_FAILURE":
+    case "FETCH_DATA_RESPONSE_FAILURE":
       return {
         ...state,
         data: [],
@@ -23,4 +22,4 @@ const widgetReducer = (state = initialState, action) => {
   }
 };
 
-export default widgetReducer;
+export default dataResponseReducer;

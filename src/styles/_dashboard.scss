@@ -20,6 +20,10 @@
     }
   }
 
+  > h2 {
+    padding-top: 1rem;
+  }
+
   .widget-container {
     @include flex(row, space-between, stretch, 2rem);
     padding: 1rem 2rem 1rem 0;
@@ -71,32 +75,29 @@
   }
 
   .graph-container {
-    @include flex(row, unset, unset, 2rem);
-    padding: 0 2rem 2rem 0;
+    @include flex(row, 1rem, space-between);
+    padding: 0 1rem 1rem 0;
     > div {
       background-color: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+      padding: 2rem;
       border-radius: 10px;
-    }
-
-    .revenue-chart {
-      width: 100%;
-      padding: 1rem 3rem;
-
-      > h2 {
-        @include heading;
-        margin: 1rem 0 2rem 0.25rem;
-        text-align: center;
-      }
     }
 
     .dashboard-categories {
       width: 100%;
-      max-width: 16rem;
+      max-width: 28rem;
       @include flex(column, center, unset, 0);
       padding-bottom: 2rem;
+      > h3 {
+        @include heading;
+        margin: 1rem 0 2rem 0;
+        padding-bottom: 1rem;
+        text-align: center;
+      }
       > h2 {
         @include heading;
-        margin: 1.5rem 0 2rem 0;
+
         text-align: center;
       }
 

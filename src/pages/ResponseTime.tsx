@@ -1,25 +1,16 @@
 import React, { useState } from "react";
-
+import { useSelector } from "react-redux";
 import AdminSidebar from "../components/AdminSidebar";
 import { LineChart } from "../components/LineChart";
-
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+import { BsSearch } from "react-icons/bs";
+import { FaRegBell } from "react-icons/fa";
+import userImg from "../assets/userpic.png";
 
 const ResponseTime = () => {
   const [chartType, setChartType] = useState("day_wise");
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const data = useSelector((state) => state.data.data.response_times);
 
   const handleSelectChange = (event: {
     target: { value: React.SetStateAction<string> };
@@ -29,40 +20,34 @@ const ResponseTime = () => {
   return (
     <div className="admin-container">
       <AdminSidebar />
-      <main className="chart-container">
-        <h2>
-          {chartType === "day_wise" ? "Day Wise" : "Week Wise"} Response Time
-        </h2>
+      <main className="dashboard">
+        <div className="bar">
+          <BsSearch />
+          <input type="text" placeholder="Search for data, users, docs" />
+          <FaRegBell />
+          <img src={userImg} alt="User" />
+        </div>
+
         <section>
           <label>Select Chart Type:</label>
           <select onChange={handleSelectChange} value={chartType}>
             <option value="day_wise">Day Wise</option>
             <option value="week_wise">Week Wise</option>
           </select>
-          <LineChart
-            data={
-              chartType === "day_wise"
-                ? [
-                    { date: "2023-05-01", average_time: 0.4 },
-                    { date: "2023-05-02", average_time: 0.42 },
-                    { date: "2023-05-03", average_time: 0.35 },
-                    { date: "2023-05-04", average_time: 0.5 },
-                    { date: "2023-05-05", average_time: 0.47 },
-                  ]
-                : [
-                    { week: "18", average_time: 0.45 },
-                    { week: "19", average_time: 0.43 },
-                    { week: "20", average_time: 0.5 },
-                    { week: "21", average_time: 0.46 },
-                    { week: "22", average_time: 0.41 },
-                  ]
-            }
-            label="Average Time"
-            borderColor="rgb(53, 162, 255)"
-            backgroundColor="rgba(53, 162, 255, 0.5)"
-            labels={chartType === "day_wise" ? months : undefined}
-          />
+
+          <div className="graph-container">
+            <LineChart
+              data={data[chartType] || []}
+              label="Average Time"
+              borderColor="rgb(53, 162, 255)"
+              backgroundColor="rgba(53, 162, 255, 0.5)"
+              isWeekWise={chartType === "week_wise"}
+            />
+          </div>
         </section>
+        <h2>
+          {chartType === "day_wise" ? "Day Wise" : "Week Wise"} Response Time
+        </h2>
       </main>
     </div>
   );
