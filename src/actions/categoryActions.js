@@ -1,5 +1,3 @@
-// src/actions/categoryActions.js
-
 export const fetchCategoryDistributionSuccess = (data) => ({
   type: "FETCH_CATEGORY_DISTRIBUTION_SUCCESS",
   payload: data,

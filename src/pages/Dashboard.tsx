@@ -6,7 +6,9 @@ import CategoryDistribution from "../components/CategoryDistribution";
 import WidgetItem from "../components/WidgetItems";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchWidgets, fetchCategoryDistribution } from "../actions/actions";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { fetchWidgets } from "../actions/actions";
 
 const Dashboard: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,6 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     dispatch(fetchWidgets());
-    dispatch(fetchCategoryDistribution());
   }, [dispatch]);
 
   return (

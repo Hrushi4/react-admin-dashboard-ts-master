@@ -97,5 +97,28 @@
       { "week": "21", "average_time": 0.46 },
       { "week": "22", "average_time": 0.41 }
     ]
+  },
+  "user_satisfaction": {
+    "ratings": [
+      { "rating": 1, "count": 15 },
+      { "rating": 2, "count": 35 },
+      { "rating": 3, "count": 200 },
+      { "rating": 4, "count": 500 },
+      { "rating": 5, "count": 600 }
+    ]
+  },
+  "usage_statistics": {
+    "by_platform": {
+      "iOS": 600,
+      "Android": 700,
+      "Web": 200
+    },
+    "by_country": {
+      "USA": 800,
+      "India": 250,
+      "Germany": 150,
+      "Japan": 100,
+      "Brazil": 200
+    }
   }
 }
