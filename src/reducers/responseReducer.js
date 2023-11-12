@@ -1,5 +1,5 @@
 const initialState = {
-  responseData: [],
+  responseData: {},
   error: null,
 };
 
@@ -14,7 +14,7 @@ const responseReducer = (state = initialState, action) => {
     case "FETCH_RESPONSE_FAILURE":
       return {
         ...state,
-        responseData: [],
+        responseData: {},
         error: action.payload,
       };
     default:

@@ -1,25 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+import { useDispatch, useSelector } from "react-redux";
 import AdminSidebar from "../components/AdminSidebar";
 import { LineChart } from "../components/LineChart";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { fetchResponse } from "../actions/actions";
 
-const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "Aug",
-  "Sept",
-  "Oct",
-  "Nov",
-  "Dec",
-];
+// const months = [
+//   "January",
+//   "February",
+//   "March",
+//   "April",
+//   "May",
+//   "June",
+//   "July",
+//   "Aug",
+//   "Sept",
+//   "Oct",
+//   "Nov",
+//   "Dec",
+// ];
 
 const ResponseTime = () => {
   const [chartType, setChartType] = useState("day_wise");
+  const dispatch = useDispatch();
+  const { response_times, error } = useSelector((state) => state?.response);
+
+  console.log(response_times);
+  useEffect(() => {
+    console.log("useEfffect");
+    dispatch(fetchResponse());
+  }, [dispatch]);
 
   const handleSelectChange = (event: {
     target: { value: React.SetStateAction<string> };
@@ -39,29 +51,23 @@ const ResponseTime = () => {
             <option value="day_wise">Day Wise</option>
             <option value="week_wise">Week Wise</option>
           </select>
-          <LineChart
-            data={
-              chartType === "day_wise"
-                ? [
-                    { date: "2023-05-01", average_time: 0.4 },
-                    { date: "2023-05-02", average_time: 0.42 },
-                    { date: "2023-05-03", average_time: 0.35 },
-                    { date: "2023-05-04", average_time: 0.5 },
-                    { date: "2023-05-05", average_time: 0.47 },
-                  ]
-                : [
-                    { week: "18", average_time: 0.45 },
-                    { week: "19", average_time: 0.43 },
-                    { week: "20", average_time: 0.5 },
-                    { week: "21", average_time: 0.46 },
-                    { week: "22", average_time: 0.41 },
-                  ]
-            }
-            label="Average Time"
-            borderColor="rgb(53, 162, 255)"
-            backgroundColor="rgba(53, 162, 255, 0.5)"
-            labels={chartType === "day_wise" ? months : undefined}
-          />
+          {error ? (
+            <div className="error-message">{error}</div>
+          ) : (
+            <>
+              <LineChart
+                data={response_times[chartType] || []}
+                label="Average Time"
+                borderColor="rgb(53, 162, 255)"
+                backgroundColor="rgba(53, 162, 255, 0.5)"
+                isWeekWise={chartType === "week_wise"}
+              />
+              <h2>
+                {chartType === "day_wise" ? "Day Wise" : "Week Wise"} Response
+                Time
+              </h2>
+            </>
+          )}{" "}
         </section>
       </main>
     </div>
