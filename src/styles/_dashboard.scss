@@ -24,6 +24,25 @@
     padding-top: 1rem;
   }
 
+  .line-chart {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+    padding: 2rem;
+    border-radius: 10px;
+    width: 70%;
+    margin-top: 2rem;
+    margin-left: 8rem;
+  }
+  .pie-chart {
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.132);
+    padding: 2rem;
+    border-radius: 10px;
+
+    margin-top: 2rem;
+    width: 40%;
+  }
+
   .widget-container {
     @include flex(row, space-between, stretch, 2rem);
     padding: 1rem 2rem 1rem 0;

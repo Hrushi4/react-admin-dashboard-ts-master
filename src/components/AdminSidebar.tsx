@@ -84,7 +84,7 @@ const DivOne = ({ location }: { location: Location }) => (
         location={location}
       />
       <Li
-        url="/admin/chart/UsageStatistics"
+        url="/admin/UsageStatistics"
         text="Usage Statistics"
         Icon={FaChartBar}
         location={location}

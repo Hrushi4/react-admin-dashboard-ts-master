@@ -16,9 +16,16 @@ const UserSatisfaction = () => {
           <FaRegBell />
           <img src={userImg} alt="User" />
         </div>
-        <section className="dashboard-categories">
-          <PieChart />
-        </section>
+
+        <h2
+          style={{
+            marginRight: "0.5rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <label>Usage Statistics</label>
+        </h2>
+        <PieChart />
       </main>
     </div>
   );

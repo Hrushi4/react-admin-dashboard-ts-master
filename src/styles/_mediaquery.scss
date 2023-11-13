@@ -7,6 +7,23 @@
     > h2 {
       text-align: center;
     }
+    .line-chart {
+      width: 100%;
+      margin-top: 2rem;
+      margin-left: 0;
+    }
+
+    .pie-chart {
+      width: 100%;
+      margin-top: 2rem;
+      margin-left: 0;
+    }
+    .line-chart-heading {
+      display: flex;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
     .widget-container,
     .graph-container,
     .transaction-container {

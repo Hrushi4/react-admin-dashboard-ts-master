@@ -6,7 +6,11 @@ import { BsSearch } from "react-icons/bs";
 import { FaRegBell } from "react-icons/fa";
 import userImg from "../assets/userpic.png";
 
-const ResponseTime = () => {
+interface SectionProps {
+  // Define any additional props here
+}
+
+const ResponseTime: React.FC<SectionProps> = () => {
   const [chartType, setChartType] = useState("day_wise");
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -27,27 +31,32 @@ const ResponseTime = () => {
           <FaRegBell />
           <img src={userImg} alt="User" />
         </div>
-
-        <section>
-          <label>Select Chart Type:</label>
-          <select onChange={handleSelectChange} value={chartType}>
-            <option value="day_wise">Day Wise</option>
-            <option value="week_wise">Week Wise</option>
-          </select>
-
-          <div className="graph-container">
-            <LineChart
-              data={data[chartType] || []}
-              label="Average Time"
-              borderColor="rgb(53, 162, 255)"
-              backgroundColor="rgba(53, 162, 255, 0.5)"
-              isWeekWise={chartType === "week_wise"}
-            />
-          </div>
-        </section>
         <h2>
           {chartType === "day_wise" ? "Day Wise" : "Week Wise"} Response Time
         </h2>
+        <div className="line-chart-heading">
+          <select
+            style={{
+              borderRadius: "10%",
+              alignItems: "center",
+              border: "3px solid",
+            }}
+            onChange={handleSelectChange}
+            value={chartType}
+          >
+            <option value="day_wise">Day Wise</option>
+            <option value="week_wise">Week Wise</option>
+          </select>
+        </div>
+        <div className="line-chart">
+          <LineChart
+            data={data[chartType] || []}
+            label="Average Time"
+            borderColor="rgb(53, 162, 255)"
+            backgroundColor="rgba(53, 162, 255, 0.5)"
+            isWeekWise={chartType === "week_wise"}
+          />
+        </div>
       </main>
     </div>
   );

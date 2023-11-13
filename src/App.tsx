@@ -38,7 +38,7 @@ const App = () => {
               element={<UserSatisfaction />}
             />
             <Route
-              path="/admin/chart/UsageStatistics"
+              path="/admin/UsageStatistics"
               element={<UsageStatistics />}
             />
           </Routes>

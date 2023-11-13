@@ -96,13 +96,23 @@ const UsageStatisticsChart: React.FC<UsageStatisticsChart> = () => {
   return (
     <>
       <div className="">
-        <div style={{ display: "flex" }}>
-          <h1>
-            <label>Select Usage Chart Type:</label>
-          </h1>
+        <div
+          style={{
+            display: "flex",
+            marginBottom: "1rem",
+          }}
+        >
+          <h3 style={{ marginRight: "0.5rem" }}>
+            <label>Usage Statistics:</label>
+          </h3>
           <select
             onChange={handleUsageChartSelectChange}
             value={usageChartType}
+            style={{
+              borderRadius: "10%",
+              alignItems: "center",
+              border: "2px solid",
+            }}
           >
             <option value="by_platform">By Platform</option>
             <option value="by_country">By Country</option>

@@ -45,13 +45,19 @@ export const PieChart: React.FC<RatingsChartProps> = () => {
 
   const ratingsChartOptions: ChartOptions<"pie"> = {
     responsive: true,
+    aspectRatio: 1,
     plugins: {
       legend: {
         display: true,
-        position: "bottom",
+        position: "top",
       },
     },
+    cutout: "30%",
   };
 
-  return <Pie data={ratingsChartData} options={ratingsChartOptions} />;
+  return (
+    <section className="pie-chart">
+      <Pie data={ratingsChartData} options={ratingsChartOptions} />
+    </section>
+  );
 };
