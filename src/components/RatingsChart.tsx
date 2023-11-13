@@ -18,6 +18,8 @@ interface RatingsChartProps {}
 export const PieChart: React.FC<RatingsChartProps> = () => {
   // Fetch ratings data from the Redux store
   const data = useSelector(
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     (state) => state.data.data.user_satisfaction.ratings
   );
 

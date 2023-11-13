@@ -43,14 +43,18 @@ const Dashboard: React.FC = () => {
             <div className="dashboard-categories">
               <h2>Inventory</h2>
               <div>
-                {data.categories.map((i) => (
-                  <CategoryItem
-                    key={i.heading}
-                    heading={i.heading}
-                    value={i.value}
-                    color={`hsl(${i.value * 4},${i.value}%,50%)`}
-                  />
-                ))}
+                {
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment
+                  // @ts-ignore
+                  data.categories.map((i) => (
+                    <CategoryItem
+                      key={i.heading}
+                      heading={i.heading}
+                      value={i.value}
+                      color={`hsl(${i.value * 4},${i.value}%,50%)`}
+                    />
+                  ))
+                }
               </div>
             </div>
             <div className="dashboard-categories">

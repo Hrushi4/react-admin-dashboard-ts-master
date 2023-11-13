@@ -35,10 +35,15 @@ const UsageStatisticsChart: React.FC<UsageStatisticsChart> = () => {
   const [usageChartType, setUsageChartType] = useState("by_platform");
 
   // Fetch data based on the selected usage chart type from the Redux store
+
   const data = useSelector((state) =>
     usageChartType === "by_platform"
-      ? state.data.data.usage_statistics.by_platform
-      : state.data.data.usage_statistics.by_country
+      ? // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        state.data.data.usage_statistics.by_platform
+      : // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        state.data.data.usage_statistics.by_country
   );
 
   // Structure the data for the Bar chart
