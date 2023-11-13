@@ -16,10 +16,12 @@ ChartJS.register(Title, Tooltip, Legend, ArcElement, PointElement, Filler);
 
 interface RatingsChartProps {}
 export const PieChart: React.FC<RatingsChartProps> = () => {
+  // Fetch ratings data from the Redux store
   const data = useSelector(
     (state) => state.data.data.user_satisfaction.ratings
   );
 
+  // Structure the data for the Pie chart
   const ratingsChartData = {
     labels: data.map(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -43,6 +45,7 @@ export const PieChart: React.FC<RatingsChartProps> = () => {
     ],
   };
 
+  // Options for the Pie chart
   const ratingsChartOptions: ChartOptions<"pie"> = {
     responsive: true,
     aspectRatio: 1,

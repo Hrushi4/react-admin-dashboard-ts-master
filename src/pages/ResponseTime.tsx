@@ -11,11 +11,15 @@ interface SectionProps {
 }
 
 const ResponseTime: React.FC<SectionProps> = () => {
+  // State to manage the selected chart type (day_wise or week_wise)
   const [chartType, setChartType] = useState("day_wise");
+
+  // Fetch response time data from the Redux state
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const data = useSelector((state) => state.data.data.response_times);
 
+  // Event handler for chart type selection change
   const handleSelectChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {

@@ -31,10 +31,12 @@ ChartJS.register(
 interface CategoryDistributionProps {}
 
 const CategoryDistribution: React.FC<CategoryDistributionProps> = () => {
+  // Get category distribution data from Redux state
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/ban-ts-comment
   //@ts-ignore
   const data = useSelector((state) => state.data.data.category_distribution);
 
+  // Data structure for Bar chart
   const chartData = {
     labels: Object.keys(data),
     datasets: [
@@ -54,6 +56,7 @@ const CategoryDistribution: React.FC<CategoryDistributionProps> = () => {
     ],
   };
 
+  // Options for Bar chart
   const options = {
     responsive: true,
     plugins: {

@@ -1,6 +1,7 @@
 import React from "react";
 import { HiTrendingUp, HiTrendingDown } from "react-icons/hi";
 
+// Props interface for the WidgetItem component
 interface WidgetItemProps {
   data: {
     heading: string;
@@ -11,6 +12,7 @@ interface WidgetItemProps {
 }
 
 const WidgetItem: React.FC<WidgetItemProps> = ({ data }) => (
+  // Container for rendering individual widgets
   <section className="widget-container">
     {data.map((item, index) => (
       <article className="widget" key={index}>

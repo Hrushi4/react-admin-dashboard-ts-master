@@ -64,12 +64,13 @@ const Dashboard: React.FC = () => {
   );
 };
 
+// Props interface for CategoryItem component
 interface CategoryItemProps {
   color: string;
   value: number;
   heading: string;
 }
-
+// CategoryItem component definition
 const CategoryItem = ({ color, value, heading }: CategoryItemProps) => (
   <div className="category-item">
     <h5>{heading}</h5>

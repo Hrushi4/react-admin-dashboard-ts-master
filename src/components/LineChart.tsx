@@ -33,6 +33,8 @@ interface DataPoint {
   week?: string;
   average_time: number;
 }
+
+// Define props for the LineChart component
 interface LineChartProps {
   data: DataPoint[];
   label: string;
@@ -41,6 +43,7 @@ interface LineChartProps {
   isWeekWise?: boolean;
 }
 
+// LineChart component
 export const LineChart = ({
   data,
   label,
@@ -48,10 +51,12 @@ export const LineChart = ({
   borderColor,
   isWeekWise = false,
 }: LineChartProps) => {
+  // Extract labels from data based on whether it is week-wise
   const labels = isWeekWise
     ? data.map((entry) => entry.week || "")
     : data.map((entry) => entry.date || "");
 
+  // Options for the Line chart
   const options: ChartOptions<"line"> = {
     responsive: true,
     plugins: {
@@ -83,6 +88,7 @@ export const LineChart = ({
     },
   };
 
+  // Data structure for the Line chart
   const lineChartData: ChartData<"line", number[], string> = {
     labels,
     datasets: [

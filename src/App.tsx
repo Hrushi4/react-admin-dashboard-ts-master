@@ -7,6 +7,7 @@ import Loader from "./components/Loader";
 //@ts-ignore
 import { fetchData } from "../src/actions/dataResponseAction";
 
+// Lazy load the components for better performance
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const ResponseTime = lazy(() => import("./pages/ResponseTime"));
 const UserSatisfaction = lazy(() => import("./pages/UserSatisfaction"));
@@ -14,6 +15,8 @@ const UsageStatistics = lazy(() => import("./pages/UsageStatistics"));
 
 const App = () => {
   const dispatch = useDispatch();
+
+  // Fetch data on component mount using useEffect and dispatch
   useEffect(() => {
     dispatch(fetchData());
   }, []);

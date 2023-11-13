@@ -31,13 +31,17 @@ ChartJS.register(
 interface UsageStatisticsChart {}
 
 const UsageStatisticsChart: React.FC<UsageStatisticsChart> = () => {
+  // State to manage the selected usage chart type
   const [usageChartType, setUsageChartType] = useState("by_platform");
 
+  // Fetch data based on the selected usage chart type from the Redux store
   const data = useSelector((state) =>
     usageChartType === "by_platform"
       ? state.data.data.usage_statistics.by_platform
       : state.data.data.usage_statistics.by_country
   );
+
+  // Structure the data for the Bar chart
   const chartData = {
     labels: Object.keys(data),
     datasets: [
@@ -57,6 +61,7 @@ const UsageStatisticsChart: React.FC<UsageStatisticsChart> = () => {
     ],
   };
 
+  // Options for the Bar chart
   const options = {
     responsive: true,
     plugins: {
@@ -87,6 +92,7 @@ const UsageStatisticsChart: React.FC<UsageStatisticsChart> = () => {
     },
   };
 
+  // Event handler for changing the usage chart type
   const handleUsageChartSelectChange = (event: {
     target: { value: React.SetStateAction<string> };
   }) => {

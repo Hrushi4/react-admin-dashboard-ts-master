@@ -9,15 +9,18 @@ import { Link, Location, useLocation } from "react-router-dom";
 const AdminSidebar = () => {
   const location = useLocation();
 
+  // State to manage modal visibility and mobile view
   const [showModal, setShowModal] = useState<boolean>(false);
   const [phoneActive, setPhoneActive] = useState<boolean>(
     window.innerWidth < 1100
   );
 
+  // Event handler to handle window resize and adjust mobile view
   const resizeHandler = () => {
     setPhoneActive(window.innerWidth < 1100);
   };
 
+  // Effect to add and remove resize event listener
   useEffect(() => {
     window.addEventListener("resize", resizeHandler);
 
@@ -93,6 +96,7 @@ const DivOne = ({ location }: { location: Location }) => (
   </div>
 );
 
+// Li component representing a single navigation item
 interface LiProps {
   url: string;
   text: string;
