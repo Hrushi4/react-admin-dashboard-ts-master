@@ -47,7 +47,7 @@ interactive charts to enhance the user experience.
 ## Project Structure
 
 ```bash
-ai-insights-dashboard/
+react-ai-data-dashboard/
 │
 ├──public/
 │   ├── data.json          # Mock AI Data
